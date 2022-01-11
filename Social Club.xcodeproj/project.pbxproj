@@ -7,18 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A10BF71278E359C004DF0B8 /* PreviewActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10BF70278E359C004DF0B8 /* PreviewActivitySheet.swift */; };
 		3A647E3C278C00E5002990BC /* Social_ClubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E3B278C00E5002990BC /* Social_ClubApp.swift */; };
-		3A647E3E278C00E5002990BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E3D278C00E5002990BC /* ContentView.swift */; };
+		3A647E3E278C00E5002990BC /* GlobalActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E3D278C00E5002990BC /* GlobalActivityView.swift */; };
 		3A647E40278C00E7002990BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A647E3F278C00E7002990BC /* Assets.xcassets */; };
 		3A647E43278C00E7002990BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A647E42278C00E7002990BC /* Preview Assets.xcassets */; };
+		3A647E4D278C0182002990BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E4C278C0182002990BC /* User.swift */; };
+		3A647E4F278C018F002990BC /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E4E278C018F002990BC /* Activity.swift */; };
+		3A647E51278C0294002990BC /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E50278C0294002990BC /* UserData.swift */; };
+		3A647E53278C029E002990BC /* ActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E52278C029E002990BC /* ActivityData.swift */; };
+		3A647E55278C03F5002990BC /* AddActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E54278C03F5002990BC /* AddActivitySheet.swift */; };
+		3A647E57278C054E002990BC /* ModifyActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E56278C054E002990BC /* ModifyActivitySheet.swift */; };
+		3A647E59278C057F002990BC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E58278C057F002990BC /* UserProfileView.swift */; };
+		3A647E5B278C06F2002990BC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E5A278C06F2002990BC /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A10BF70278E359C004DF0B8 /* PreviewActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewActivitySheet.swift; sourceTree = "<group>"; };
 		3A647E38278C00E5002990BC /* Social Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A647E3B278C00E5002990BC /* Social_ClubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_ClubApp.swift; sourceTree = "<group>"; };
-		3A647E3D278C00E5002990BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3A647E3D278C00E5002990BC /* GlobalActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalActivityView.swift; sourceTree = "<group>"; };
 		3A647E3F278C00E7002990BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A647E42278C00E7002990BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3A647E4C278C0182002990BC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A647E4E278C018F002990BC /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		3A647E50278C0294002990BC /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		3A647E52278C029E002990BC /* ActivityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityData.swift; sourceTree = "<group>"; };
+		3A647E54278C03F5002990BC /* AddActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivitySheet.swift; sourceTree = "<group>"; };
+		3A647E56278C054E002990BC /* ModifyActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyActivitySheet.swift; sourceTree = "<group>"; };
+		3A647E58278C057F002990BC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		3A647E5A278C06F2002990BC /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +69,11 @@
 		3A647E3A278C00E5002990BC /* Social Club */ = {
 			isa = PBXGroup;
 			children = (
+				3A647E4B278C0115002990BC /* Models */,
+				3A647E4A278C010F002990BC /* Views */,
+				3A647E49278C00FF002990BC /* ViewModels */,
 				3A647E3B278C00E5002990BC /* Social_ClubApp.swift */,
-				3A647E3D278C00E5002990BC /* ContentView.swift */,
+				3A647E3D278C00E5002990BC /* GlobalActivityView.swift */,
 				3A647E3F278C00E7002990BC /* Assets.xcassets */,
 				3A647E41278C00E7002990BC /* Preview Content */,
 			);
@@ -65,6 +86,36 @@
 				3A647E42278C00E7002990BC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3A647E49278C00FF002990BC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3A647E50278C0294002990BC /* UserData.swift */,
+				3A647E52278C029E002990BC /* ActivityData.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3A647E4A278C010F002990BC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A647E54278C03F5002990BC /* AddActivitySheet.swift */,
+				3A647E56278C054E002990BC /* ModifyActivitySheet.swift */,
+				3A647E58278C057F002990BC /* UserProfileView.swift */,
+				3A647E5A278C06F2002990BC /* MainTabView.swift */,
+				3A10BF70278E359C004DF0B8 /* PreviewActivitySheet.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3A647E4B278C0115002990BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A647E4C278C0182002990BC /* User.swift */,
+				3A647E4E278C018F002990BC /* Activity.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A647E3E278C00E5002990BC /* ContentView.swift in Sources */,
+				3A647E53278C029E002990BC /* ActivityData.swift in Sources */,
+				3A647E59278C057F002990BC /* UserProfileView.swift in Sources */,
+				3A647E55278C03F5002990BC /* AddActivitySheet.swift in Sources */,
+				3A10BF71278E359C004DF0B8 /* PreviewActivitySheet.swift in Sources */,
+				3A647E57278C054E002990BC /* ModifyActivitySheet.swift in Sources */,
+				3A647E3E278C00E5002990BC /* GlobalActivityView.swift in Sources */,
 				3A647E3C278C00E5002990BC /* Social_ClubApp.swift in Sources */,
+				3A647E4F278C018F002990BC /* Activity.swift in Sources */,
+				3A647E51278C0294002990BC /* UserData.swift in Sources */,
+				3A647E4D278C0182002990BC /* User.swift in Sources */,
+				3A647E5B278C06F2002990BC /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
