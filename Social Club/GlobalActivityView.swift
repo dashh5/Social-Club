@@ -12,45 +12,55 @@ struct GlobalActivityView: View {
     @EnvironmentObject var activityData: ActivityData
     @Environment(\.presentationMode) var presentationMode
     
-    @State var modifySheet = false
-    @State var previewSheet = false
-    @State var addSheet = false
     @State var currActivity = Activity()
+    @State var showActivityButton = false
+    @State var showJoinedActivitySheet = false
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(activityData.activities) { activity in
-                    if activity.creator.id != userData.currentUser.id {
-                        NavigationLink(activity.description) {
-                            PreviewActivityView(activity: binding(for: activity))
-                                .navigationTitle("Preview Activity")
+            VStack {
+                List {
+                    ForEach(activityData.activities) { activity in
+                        if activity.creator.id != userData.currentUser.id {
+                            NavigationLink(activity.description) {
+                                PreviewActivityView(activity: binding(for: activity), joinedActivity: $showActivityButton)
+                                    .navigationTitle("Preview Activity")
+                            }
+                        } else {
+                            NavigationLink(activity.description) {
+                                ModifyActivityView(activity: binding(for: activity))
+                                    .navigationTitle("Modify Activity")
+                            }
+                            .foregroundColor(Color.purple)
+                            
                         }
-                    } else {
-                        NavigationLink(activity.description) {
-                            ModifyActivityView(activity: binding(for: activity))
-                                .navigationTitle("Modify Activity")
-                        }
-                        .foregroundColor(Color.purple)
-                        
                     }
                 }
-            }
-            .foregroundColor(.berkeleyBlue)
-            .listStyle(.plain)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: { addSheet.toggle() }) {
-                        Image(systemName: "plus.circle")
+                .listStyle(.plain)
+                .navigationTitle("Activities")
+                .sheet(isPresented: $showJoinedActivitySheet, content: { JoinedActivitySheet() })
+                if showActivityButton {
+                    Button(action: { showJoinedActivitySheet = true }) {
+                        longButtonLabel
                     }
+                    .padding(.bottom)
                 }
             }
-            .navigationTitle("Activities")
-            //            .sheet(isPresented: $modifySheet, content: { ModifyActivityView(activity: $currActivity, isPresenting: $modifySheet) })
-            //            .sheet(isPresented: $previewSheet, content: { PreviewActivityView(activity: $currActivity, isPresenting: $previewSheet) })
-            .sheet(isPresented: $addSheet, content: { AddActivitySheet(isPresenting: $addSheet) })
         }
     }
+}
+
+var longButtonLabel: some View {
+    HStack {
+        Spacer()
+        Text("Current Activity")
+            .foregroundColor(Color.berkeleyGold)
+            .font(.body)
+            .bold()
+            .padding()
+        Spacer()
+    }
+    .background(Color.berkeleyBlue).cornerRadius(2.5)
 }
 
 extension GlobalActivityView {
@@ -85,6 +95,7 @@ extension Color {
 }
 
 struct GlobalActivityView_Previews: PreviewProvider {
+    
     static var previews: some View {
         GlobalActivityView()
             .environmentObject(UserData())

@@ -13,8 +13,10 @@ struct PreviewActivityView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var activity: Activity
+    @Binding var joinedActivity: Bool
     
     @State var alertJPresenting = false
+    @State var alertAPresenting = false
     
     
     var body: some View {
@@ -34,7 +36,6 @@ struct PreviewActivityView: View {
                     Text("\(diff) minute\(Int(diff) ?? 2 == 1 ? "" : "s") ago")
                         .padding(.leading)
                 }
-                
             }
             List {
                 Section("Description") {
@@ -48,18 +49,16 @@ struct PreviewActivityView: View {
                 }
             }
             Button("Join Activity") {
-                alertJPresenting = true
+                joinable()
             }
-            .foregroundColor(.white)
             .buttonStyle(.borderedProminent)
             .padding()
         }
-        .foregroundColor(.berkeleyBlue)
         .toolbar {
             ToolbarItem {
                 HStack {
                     Button(action: {
-                        alertJPresenting = true
+                        joinable()
                     }) {
                         Text("Join")
                     }
@@ -67,19 +66,35 @@ struct PreviewActivityView: View {
                 
             }
         }
-        
         .alert("Activity Joined", isPresented: $alertJPresenting, actions: { Button("Cool", role: .cancel, action: {
-            self.presentationMode.wrappedValue.dismiss()
-            userData.currentUser.joinActivity(activity: activity)
+            activityJoinedActions()
         }) })
+        .alert("Error: You're already in an activity!", isPresented: $alertAPresenting, actions: { Button("Ok", role: .cancel, action: {
+            
+        }) })
+    }
+    
+    func joinable() {
+        if joinedActivity {
+            alertAPresenting = true
+        } else {
+            alertJPresenting = true
+        }
+    }
+    
+    func activityJoinedActions() {
+        joinedActivity = true
+        self.presentationMode.wrappedValue.dismiss()
+        userData.currentUser.joinActivity(activity: activity)
     }
 }
 
 struct PreviewActivityView_Previews: PreviewProvider {
     @State static var emptyActivity = Activity()
     @State static var isPresenting = true
+    @State static var showActivityButton = false
     
     static var previews: some View {
-        PreviewActivityView(activity: $emptyActivity)
+        PreviewActivityView(activity: $emptyActivity, joinedActivity: $showActivityButton)
     }
 }

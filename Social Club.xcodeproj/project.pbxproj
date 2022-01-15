@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3A10BF71278E359C004DF0B8 /* PreviewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10BF70278E359C004DF0B8 /* PreviewActivityView.swift */; };
-		3A10BF73278E5C46004DF0B8 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10BF72278E5C46004DF0B8 /* AuthenticationView.swift */; };
 		3A647E3C278C00E5002990BC /* Social_ClubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E3B278C00E5002990BC /* Social_ClubApp.swift */; };
 		3A647E3E278C00E5002990BC /* GlobalActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E3D278C00E5002990BC /* GlobalActivityView.swift */; };
 		3A647E40278C00E7002990BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A647E3F278C00E7002990BC /* Assets.xcassets */; };
@@ -21,11 +20,11 @@
 		3A647E57278C054E002990BC /* ModifyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E56278C054E002990BC /* ModifyActivityView.swift */; };
 		3A647E59278C057F002990BC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E58278C057F002990BC /* UserProfileView.swift */; };
 		3A647E5B278C06F2002990BC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E5A278C06F2002990BC /* MainTabView.swift */; };
+		3A6A343A27925DF000A7EA45 /* JoinedActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6A343927925DF000A7EA45 /* JoinedActivitySheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A10BF70278E359C004DF0B8 /* PreviewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewActivityView.swift; sourceTree = "<group>"; };
-		3A10BF72278E5C46004DF0B8 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		3A647E38278C00E5002990BC /* Social Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A647E3B278C00E5002990BC /* Social_ClubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_ClubApp.swift; sourceTree = "<group>"; };
 		3A647E3D278C00E5002990BC /* GlobalActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalActivityView.swift; sourceTree = "<group>"; };
@@ -39,6 +38,7 @@
 		3A647E56278C054E002990BC /* ModifyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyActivityView.swift; sourceTree = "<group>"; };
 		3A647E58278C057F002990BC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		3A647E5A278C06F2002990BC /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		3A6A343927925DF000A7EA45 /* JoinedActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedActivitySheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +58,7 @@
 				3A10BF70278E359C004DF0B8 /* PreviewActivityView.swift */,
 				3A647E54278C03F5002990BC /* AddActivitySheet.swift */,
 				3A647E56278C054E002990BC /* ModifyActivityView.swift */,
+				3A6A343927925DF000A7EA45 /* JoinedActivitySheet.swift */,
 			);
 			path = "Activity Views";
 			sourceTree = "<group>";
@@ -112,10 +113,8 @@
 		3A647E4A278C010F002990BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A6A343B27925DF900A7EA45 /* Workflow Views */,
 				3A10BF74278E5C4E004DF0B8 /* Activity Views */,
-				3A647E58278C057F002990BC /* UserProfileView.swift */,
-				3A647E5A278C06F2002990BC /* MainTabView.swift */,
-				3A10BF72278E5C46004DF0B8 /* AuthenticationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +126,15 @@
 				3A647E4E278C018F002990BC /* Activity.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3A6A343B27925DF900A7EA45 /* Workflow Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A647E58278C057F002990BC /* UserProfileView.swift */,
+				3A647E5A278C06F2002990BC /* MainTabView.swift */,
+			);
+			path = "Workflow Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,9 +209,9 @@
 			files = (
 				3A647E53278C029E002990BC /* ActivityData.swift in Sources */,
 				3A647E59278C057F002990BC /* UserProfileView.swift in Sources */,
-				3A10BF73278E5C46004DF0B8 /* AuthenticationView.swift in Sources */,
 				3A647E55278C03F5002990BC /* AddActivitySheet.swift in Sources */,
 				3A10BF71278E359C004DF0B8 /* PreviewActivityView.swift in Sources */,
+				3A6A343A27925DF000A7EA45 /* JoinedActivitySheet.swift in Sources */,
 				3A647E57278C054E002990BC /* ModifyActivityView.swift in Sources */,
 				3A647E3E278C00E5002990BC /* GlobalActivityView.swift in Sources */,
 				3A647E3C278C00E5002990BC /* Social_ClubApp.swift in Sources */,
@@ -341,7 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Social Club/Preview Content\"";
-				DEVELOPMENT_TEAM = VM6253YQ45;
+				DEVELOPMENT_TEAM = NPQX32Q2V8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -354,7 +362,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alex-mehregan.Social-Club";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexander-mehregan.Social-Club";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -370,7 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Social Club/Preview Content\"";
-				DEVELOPMENT_TEAM = VM6253YQ45;
+				DEVELOPMENT_TEAM = 956ZU67DR8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -383,7 +391,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alex-mehregan.Social-Club";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.amehregan.Social-Club";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

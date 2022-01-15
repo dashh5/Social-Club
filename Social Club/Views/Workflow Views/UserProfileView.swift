@@ -11,10 +11,7 @@ struct UserProfileView: View {
     @EnvironmentObject private var userData: UserData
     var body: some View {
         NavigationView {
-            Form {
-                // put stuff here
-                // add ability for invitations here. friends referred, etc.
-            }
+            Text("Profile view!")
             .navigationTitle("Profile")
         }
     }

@@ -35,25 +35,24 @@ struct AddActivitySheet: View {
                         DatePicker("Date/Time", selection: $newActivity.date)
                     }
                 }
-                Button("Create Activity") {
+                Button("Post Activity") {
                     alertCPresenting = true
                 }
                 Spacer()
-                    .navigationTitle("Add Activity")
+                    .navigationTitle("Post Activity")
                     .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button(action: {
+                                isPresenting = false
+                            }) {
+                                Image(systemName: "xmark")
+                            }
+                        }
                         ToolbarItem {
-                            HStack {
-                                Button(action: {
-                                    alertCPresenting = true
-                                }) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                }
-                                
-                                Button(action: {
-                                    isPresenting = false
-                                }) {
-                                    Image(systemName: "xmark.circle")
-                                }
+                            Button(action: {
+                                alertCPresenting = true
+                            }) {
+                                Text("Post")
                             }
                         }
                     }

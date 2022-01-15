@@ -14,6 +14,7 @@ struct User: Identifiable {
     var instagram: String?
     var dateJoined = Date.now
     var id = UUID()
+    var inActivity: Bool = false
     
     init() {
         self.name = ""
@@ -29,7 +30,8 @@ struct User: Identifiable {
         }
     }
     
-    func joinActivity(activity: Activity) {
-        
+    mutating func joinActivity(activity: Activity) {
+        self.activities.append(activity)
+        self.inActivity = true
     }
 }

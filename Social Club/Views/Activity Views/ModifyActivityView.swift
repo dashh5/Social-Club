@@ -42,14 +42,14 @@ struct ModifyActivityView: View {
             Button("Save") {
                 alertMPresenting = true
             }
-            
+            .buttonStyle(.borderedProminent)
             Spacer()
                 .toolbar {
                     ToolbarItem {
                         Button(action: {
                             alertMPresenting = true
                         }) {
-                            Image(systemName: "checkmark.circle.fill")
+                            Text("Save")
                         }
                         
                     }
