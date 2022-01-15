@@ -10,7 +10,13 @@ import SwiftUI
 struct UserProfileView: View {
     @EnvironmentObject private var userData: UserData
     var body: some View {
-        Text("Profile view!")
+        NavigationView {
+            Form {
+                // put stuff here
+                // add ability for invitations here. friends referred, etc.
+            }
+            .navigationTitle("Profile")
+        }
     }
 }
 

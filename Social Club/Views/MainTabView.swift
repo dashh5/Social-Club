@@ -13,19 +13,21 @@ struct MainTabView: View {
     @State var addSheetPresented = false
     
     var body: some View {
-        TabView {
-            GlobalActivityView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            
-            UserProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.crop.circle")
-                }
-        }
-        .environmentObject(userData)
+        ZStack {
+            TabView {
+                GlobalActivityView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                
+                UserProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person.crop.circle")
+                    }
+            }
+            .environmentObject(userData)
         .environmentObject(activityData)
+        }
     }
 }
 

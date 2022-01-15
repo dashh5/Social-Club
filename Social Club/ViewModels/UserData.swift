@@ -9,19 +9,12 @@ import Foundation
 
 class UserData: ObservableObject {
     init() {
-        currentUser = User(name: "Alex", phone: 123, instagram: "YEETNUT")
+        currentUser = User(name: "TestUser", phone: 123, activities: nil, instagram: "")
+        users.append(currentUser)
     }
     
     // replace with firebase data
     var users = [User]()
     
     var currentUser: User
-    
-    func addUser() {
-        
-    }
-    
-    func delUser() {
-        
-    }
 }

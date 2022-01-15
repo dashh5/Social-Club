@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A10BF71278E359C004DF0B8 /* PreviewActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10BF70278E359C004DF0B8 /* PreviewActivitySheet.swift */; };
+		3A10BF71278E359C004DF0B8 /* PreviewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10BF70278E359C004DF0B8 /* PreviewActivityView.swift */; };
+		3A10BF73278E5C46004DF0B8 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10BF72278E5C46004DF0B8 /* AuthenticationView.swift */; };
 		3A647E3C278C00E5002990BC /* Social_ClubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E3B278C00E5002990BC /* Social_ClubApp.swift */; };
 		3A647E3E278C00E5002990BC /* GlobalActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E3D278C00E5002990BC /* GlobalActivityView.swift */; };
 		3A647E40278C00E7002990BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A647E3F278C00E7002990BC /* Assets.xcassets */; };
@@ -17,13 +18,14 @@
 		3A647E51278C0294002990BC /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E50278C0294002990BC /* UserData.swift */; };
 		3A647E53278C029E002990BC /* ActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E52278C029E002990BC /* ActivityData.swift */; };
 		3A647E55278C03F5002990BC /* AddActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E54278C03F5002990BC /* AddActivitySheet.swift */; };
-		3A647E57278C054E002990BC /* ModifyActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E56278C054E002990BC /* ModifyActivitySheet.swift */; };
+		3A647E57278C054E002990BC /* ModifyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E56278C054E002990BC /* ModifyActivityView.swift */; };
 		3A647E59278C057F002990BC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E58278C057F002990BC /* UserProfileView.swift */; };
 		3A647E5B278C06F2002990BC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E5A278C06F2002990BC /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A10BF70278E359C004DF0B8 /* PreviewActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewActivitySheet.swift; sourceTree = "<group>"; };
+		3A10BF70278E359C004DF0B8 /* PreviewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewActivityView.swift; sourceTree = "<group>"; };
+		3A10BF72278E5C46004DF0B8 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		3A647E38278C00E5002990BC /* Social Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A647E3B278C00E5002990BC /* Social_ClubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_ClubApp.swift; sourceTree = "<group>"; };
 		3A647E3D278C00E5002990BC /* GlobalActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalActivityView.swift; sourceTree = "<group>"; };
@@ -34,7 +36,7 @@
 		3A647E50278C0294002990BC /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		3A647E52278C029E002990BC /* ActivityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityData.swift; sourceTree = "<group>"; };
 		3A647E54278C03F5002990BC /* AddActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivitySheet.swift; sourceTree = "<group>"; };
-		3A647E56278C054E002990BC /* ModifyActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyActivitySheet.swift; sourceTree = "<group>"; };
+		3A647E56278C054E002990BC /* ModifyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyActivityView.swift; sourceTree = "<group>"; };
 		3A647E58278C057F002990BC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		3A647E5A278C06F2002990BC /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +52,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A10BF74278E5C4E004DF0B8 /* Activity Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A10BF70278E359C004DF0B8 /* PreviewActivityView.swift */,
+				3A647E54278C03F5002990BC /* AddActivitySheet.swift */,
+				3A647E56278C054E002990BC /* ModifyActivityView.swift */,
+			);
+			path = "Activity Views";
+			sourceTree = "<group>";
+		};
 		3A647E2F278C00E5002990BC = {
 			isa = PBXGroup;
 			children = (
@@ -100,11 +112,10 @@
 		3A647E4A278C010F002990BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A647E54278C03F5002990BC /* AddActivitySheet.swift */,
-				3A647E56278C054E002990BC /* ModifyActivitySheet.swift */,
+				3A10BF74278E5C4E004DF0B8 /* Activity Views */,
 				3A647E58278C057F002990BC /* UserProfileView.swift */,
 				3A647E5A278C06F2002990BC /* MainTabView.swift */,
-				3A10BF70278E359C004DF0B8 /* PreviewActivitySheet.swift */,
+				3A10BF72278E5C46004DF0B8 /* AuthenticationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,9 +201,10 @@
 			files = (
 				3A647E53278C029E002990BC /* ActivityData.swift in Sources */,
 				3A647E59278C057F002990BC /* UserProfileView.swift in Sources */,
+				3A10BF73278E5C46004DF0B8 /* AuthenticationView.swift in Sources */,
 				3A647E55278C03F5002990BC /* AddActivitySheet.swift in Sources */,
-				3A10BF71278E359C004DF0B8 /* PreviewActivitySheet.swift in Sources */,
-				3A647E57278C054E002990BC /* ModifyActivitySheet.swift in Sources */,
+				3A10BF71278E359C004DF0B8 /* PreviewActivityView.swift in Sources */,
+				3A647E57278C054E002990BC /* ModifyActivityView.swift in Sources */,
 				3A647E3E278C00E5002990BC /* GlobalActivityView.swift in Sources */,
 				3A647E3C278C00E5002990BC /* Social_ClubApp.swift in Sources */,
 				3A647E4F278C018F002990BC /* Activity.swift in Sources */,
