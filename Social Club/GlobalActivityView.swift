@@ -100,12 +100,8 @@ extension GlobalActivityView {
         .mask(Circle())
         .shadow(radius: 5)
     }
-}
-
-struct FeedView: View {
-    let activities: [Activity]
     
-    var body: some View {
+    var feedView: some View {
         NavigationView {
             VStack {
                 List {
