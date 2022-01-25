@@ -13,8 +13,97 @@ struct GlobalActivityView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var currActivity = Activity()
-    @State var showActivityButton = false
     @State var showJoinedActivitySheet = false
+    @State var alertJoinedPresenting = false
+    
+    var body: some View {
+        ZStack {
+            NavigationView {
+                VStack {
+                    List {
+                        ForEach(activityData.activities) { activity in
+                            if activity.creator.id != userData.currentUser.id {
+                                NavigationLink(activity.description) {
+                                    PreviewActivityView(activity: binding(for: activity))
+                                        .navigationTitle("Preview Activity")
+                                }
+                            } else {
+                                NavigationLink(activity.description) {
+                                    ModifyActivityView(activity: binding(for: activity), activityPeopleNeeded: activity.peopleNeeded)
+                                        .navigationTitle("Modify Activity")
+                                }
+                                .foregroundColor(Color.purple)
+                                
+                            }
+                        }
+                    }
+                    .listStyle(.plain)
+                    .navigationTitle("Activities")
+                    .sheet(isPresented: $showJoinedActivitySheet, content: { JoinedActivitySheet(activity: getMostRecentActivity()) })
+                    if userData.currentUser.inActivity {
+                        Button(action: { showJoinedActivitySheet = true }) {
+                            Design.blueLongButtonLabel(text: "Joined Activity")
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                    }
+                }
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    newActivityButton
+                        .padding(.bottom, 65)
+                        .padding(.trailing)
+                }
+            }
+        }
+        
+        
+    }
+    
+    var currentUser: User {
+        userData.currentUser
+    }
+}
+
+extension GlobalActivityView {
+    
+    private var activities: [Activity] {
+        return activityData.activities
+    }
+    
+    func binding(for activity: Activity) -> Binding<Activity> {
+        guard let index = activityData.index(of: activity) else {
+            fatalError("Activity not found")
+        }
+        return $activityData.activities[index]
+    }
+    
+    func getMostRecentActivity() -> Binding<Activity> {
+        return binding(for: userData.currentUser.activities[userData.currentUser.activities.endIndex - 1])
+    }
+    
+    func getMostRecentActivityNonBinding() -> Activity {
+        return  userData.currentUser.activities[userData.currentUser.activities.endIndex - 1]
+    }
+    
+    var newActivityButton: some View {
+        Button(action: { showJoinedActivitySheet = true }) {
+            Image(systemName: "plus")
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .padding()
+        }
+        .background(.blue)
+        .mask(Circle())
+        .shadow(radius: 5)
+    }
+}
+
+struct FeedView: View {
+    let activities: [Activity]
     
     var body: some View {
         NavigationView {
@@ -23,12 +112,12 @@ struct GlobalActivityView: View {
                     ForEach(activityData.activities) { activity in
                         if activity.creator.id != userData.currentUser.id {
                             NavigationLink(activity.description) {
-                                PreviewActivityView(activity: binding(for: activity), joinedActivity: $showActivityButton)
+                                PreviewActivityView(activity: binding(for: activity))
                                     .navigationTitle("Preview Activity")
                             }
                         } else {
                             NavigationLink(activity.description) {
-                                ModifyActivityView(activity: binding(for: activity))
+                                ModifyActivityView(activity: binding(for: activity), activityPeopleNeeded: activity.peopleNeeded)
                                     .navigationTitle("Modify Activity")
                             }
                             .foregroundColor(Color.purple)
@@ -38,11 +127,12 @@ struct GlobalActivityView: View {
                 }
                 .listStyle(.plain)
                 .navigationTitle("Activities")
-                .sheet(isPresented: $showJoinedActivitySheet, content: { JoinedActivitySheet() })
-                if showActivityButton {
+                .sheet(isPresented: $showJoinedActivitySheet, content: { JoinedActivitySheet(activity: getMostRecentActivity()) })
+                if userData.currentUser.inActivity {
                     Button(action: { showJoinedActivitySheet = true }) {
-                        longButtonLabel
+                        Design.blueLongButtonLabel(text: "Joined Activity")
                     }
+                    .padding(.horizontal)
                     .padding(.bottom)
                 }
             }
@@ -50,40 +140,23 @@ struct GlobalActivityView: View {
     }
 }
 
-var longButtonLabel: some View {
-    HStack {
-        Spacer()
-        Text("Current Activity")
-            .foregroundColor(Color.berkeleyGold)
-            .font(.body)
-            .bold()
-            .padding()
-        Spacer()
-    }
-    .background(Color.berkeleyBlue).cornerRadius(2.5)
-}
-
-extension GlobalActivityView {
-    
-    private var activities: [Activity] {
-        return activityData.activities
-        
-    }
-    
-    func binding(for activity: Activity) -> Binding<Activity> {
-        guard let index = activityData.index(of: activity) else {
-            fatalError("Recipe not found")
-        }
-        return $activityData.activities[index]
-    }
-}
-
 struct ActivityRow: View {
     @Binding var activity: Activity
+    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var activityData: ActivityData
     
     var body: some View {
-        NavigationView {
-            
+        HStack {
+            Image(systemName: "arrow.up")
+                .padding()
+            let karma = userData.currentUser.karma
+            Text(karma > 5 ? "\(karma)" : "")
+            Spacer()
+            let peopleSignedUp = activity.atendees?.count
+            let peopleNeeded = activity.peopleNeeded
+            Text("\(String(peopleSignedUp ?? 0))/\(String(peopleNeeded)) ppl")
+            Spacer()
+            activity.timeTillActivityView
         }
     }
     

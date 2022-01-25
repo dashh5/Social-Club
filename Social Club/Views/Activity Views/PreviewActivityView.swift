@@ -13,11 +13,10 @@ struct PreviewActivityView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var activity: Activity
-    @Binding var joinedActivity: Bool
     
     @State var alertJPresenting = false
     @State var alertAPresenting = false
-    
+    @State var alertSPresenting = false
     
     var body: some View {
         VStack {
@@ -28,14 +27,8 @@ struct PreviewActivityView: View {
                         .padding()
                     Spacer()
                 }
-                let diff = activity.getDateDiff()
-                if (Int(diff) ?? 1) < 1 {
-                    Text("Just now")
-                        .padding(.leading)
-                } else {
-                    Text("\(diff) minute\(Int(diff) ?? 2 == 1 ? "" : "s") ago")
-                        .padding(.leading)
-                }
+                activity.timeTillActivityView
+                    .padding(.leading)
             }
             List {
                 Section("Description") {
@@ -47,24 +40,15 @@ struct PreviewActivityView: View {
                 Section("Date & Time") {
                     Text(activity.date, format: .dateTime)
                 }
-            }
-            Button("Join Activity") {
-                joinable()
-            }
-            .buttonStyle(.borderedProminent)
-            .padding()
-        }
-        .toolbar {
-            ToolbarItem {
-                HStack {
-                    Button(action: {
-                        joinable()
-                    }) {
-                        Text("Join")
-                    }
+                Section("People needed") {
+                    Text(String(activity.peopleNeeded))
                 }
-                
             }
+            Button(action: { join() }) {
+                Design.blueLongButtonLabel(text: "Sign Up")
+            }
+            .padding(.horizontal)
+            .padding(.bottom)
         }
         .alert("Activity Joined", isPresented: $alertJPresenting, actions: { Button("Cool", role: .cancel, action: {
             activityJoinedActions()
@@ -72,29 +56,33 @@ struct PreviewActivityView: View {
         .alert("Error: You're already in an activity!", isPresented: $alertAPresenting, actions: { Button("Ok", role: .cancel, action: {
             
         }) })
+        .alert("Error: Activity has no more slots availible!", isPresented: $alertSPresenting, actions: { Button("Ok", role: .cancel, action: {
+        }) })
     }
     
-    func joinable() {
-        if joinedActivity {
+    func join() {
+        let inActivity: Bool = userData.currentUser.inActivity
+        if inActivity {
             alertAPresenting = true
-        } else {
+        } else if !inActivity && activity.peopleNeeded > 0 {
             alertJPresenting = true
+        } else if activity.peopleNeeded == 0 {
+            alertSPresenting = true
         }
     }
     
     func activityJoinedActions() {
-        joinedActivity = true
-        self.presentationMode.wrappedValue.dismiss()
+        activity.peopleNeeded -= 1
         userData.currentUser.joinActivity(activity: activity)
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
 struct PreviewActivityView_Previews: PreviewProvider {
     @State static var emptyActivity = Activity()
     @State static var isPresenting = true
-    @State static var showActivityButton = false
     
     static var previews: some View {
-        PreviewActivityView(activity: $emptyActivity, joinedActivity: $showActivityButton)
+        PreviewActivityView(activity: $emptyActivity)
     }
 }

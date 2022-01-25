@@ -15,6 +15,7 @@ struct User: Identifiable {
     var dateJoined = Date.now
     var id = UUID()
     var inActivity: Bool = false
+    var karma: Int = 0
     
     init() {
         self.name = ""
@@ -33,5 +34,22 @@ struct User: Identifiable {
     mutating func joinActivity(activity: Activity) {
         self.activities.append(activity)
         self.inActivity = true
+    }
+    
+    mutating func leaveActivity(activity: Activity) {
+        self.inActivity = false
+        if let index = index(of: activity) {
+            self.activities.remove(at: index)
+        }
+    }
+    
+    // get the index for a particular user's activity
+    func index(of activity: Activity) -> Int? {
+        for i in activities.indices {
+            if activities[i].id == activity.id {
+                return i
+            }
+        }
+        return nil
     }
 }

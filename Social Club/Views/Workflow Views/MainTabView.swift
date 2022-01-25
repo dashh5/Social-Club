@@ -14,6 +14,7 @@ struct MainTabView: View {
     @State var addSheetPresenting = false
     
     @State private var oldSelectedItem = 1
+    @State private var alertJoinedPresenting = false
     
     var body: some View {
         TabView(selection: $selectedItem) {
@@ -32,17 +33,24 @@ struct MainTabView: View {
         }
         .onChange(of: selectedItem) {
             if selectedItem == 2 {
-                self.addSheetPresenting = true
+                if userData.currentUser.inActivity {
+                    selectedItem = oldSelectedItem
+                    alertJoinedPresenting = true
+                } else {
+                    self.addSheetPresenting = true
+                }
             } else {
                 self.oldSelectedItem = $0
             }
         }
         .fullScreenCover(isPresented: $addSheetPresenting , onDismiss: { self.selectedItem = self.oldSelectedItem }, content: { AddActivitySheet(isPresenting: $addSheetPresenting) })
         .interactiveDismissDisabled()
-        
         .environmentObject(userData)
         .environmentObject(activityData)
+        
+        .alert("Already joined or created an activity!", isPresented: $alertJoinedPresenting, actions: { Button("Ok", role: .cancel, action: {})})
     }
+    
 }
 
 struct MainTabView_Previews: PreviewProvider {

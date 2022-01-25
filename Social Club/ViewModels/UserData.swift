@@ -6,15 +6,26 @@
 //
 
 import Foundation
+import SwiftUI
 
 class UserData: ObservableObject {
+    // replace with firebase data
+    @Published var users = [User]()
+    @Published var currentUser: User
+    
     init() {
         currentUser = User(name: "TestUser", phone: 123, activities: nil, instagram: "")
         users.append(currentUser)
     }
     
-    // replace with firebase data
-    var users = [User]()
+    func index(of user: User) -> Int? {
+        for index in users.indices {
+            if users[index].id == user.id {
+                return index
+            }
+        }
+        return nil
+    }
     
-    var currentUser: User
+    
 }
