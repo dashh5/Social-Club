@@ -11,44 +11,36 @@ struct MainTabView: View {
     @StateObject private var userData = UserData()
     @StateObject private var activityData = ActivityData()
     @State private var selectedItem = 1
-    @State var addSheetPresenting = false
+    
     
     @State private var oldSelectedItem = 1
-    @State private var alertJoinedPresenting = false
+    
+    @State var showCreateActivityButton = false
     
     var body: some View {
         TabView(selection: $selectedItem) {
-            GlobalActivityView()
+            GlobalActivityView(activities: $activityData.activities)
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(1)
-            Text("")
-                .tabItem() {
-                    Image(systemName: "plus")
-                }.tag(2)
             UserProfileView()
                 .tabItem {
-                    Image(systemName: "person.crop.circle")
+                    userData.currentUser.profilePic
                 }.tag(3)
         }
-        .onChange(of: selectedItem) {
-            if selectedItem == 2 {
-                if userData.currentUser.inActivity {
-                    selectedItem = oldSelectedItem
-                    alertJoinedPresenting = true
-                } else {
-                    self.addSheetPresenting = true
-                }
-            } else {
-                self.oldSelectedItem = $0
-            }
-        }
-        .fullScreenCover(isPresented: $addSheetPresenting , onDismiss: { self.selectedItem = self.oldSelectedItem }, content: { AddActivitySheet(isPresenting: $addSheetPresenting) })
-        .interactiveDismissDisabled()
+        .tabViewStyle(.automatic)
+//        .onChange(of: selectedItem) {
+//            if selectedItem == 2 {
+//                if userData.currentUser.inActivity {
+//                    selectedItem = oldSelectedItem
+//                    alertJoinedPresenting = true
+//                } else {
+//                    self.oldSelectedItem = $0
+//                }
+//            }
+//        }
         .environmentObject(userData)
         .environmentObject(activityData)
-        
-        .alert("Already joined or created an activity!", isPresented: $alertJoinedPresenting, actions: { Button("Ok", role: .cancel, action: {})})
     }
     
 }

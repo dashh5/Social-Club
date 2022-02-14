@@ -20,6 +20,10 @@
 		3A647E57278C054E002990BC /* ModifyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E56278C054E002990BC /* ModifyActivityView.swift */; };
 		3A647E59278C057F002990BC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E58278C057F002990BC /* UserProfileView.swift */; };
 		3A647E5B278C06F2002990BC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A647E5A278C06F2002990BC /* MainTabView.swift */; };
+		3A6C062227A66E1000BA24C1 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C062127A66E1000BA24C1 /* Rating.swift */; };
+		3A6C062427A672A500BA24C1 /* ActivityHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C062327A672A500BA24C1 /* ActivityHistoryView.swift */; };
+		3A8D1ED827A13E5E0066EBBC /* AcknowledgementsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D1ED727A13E5E0066EBBC /* AcknowledgementsSheet.swift */; };
+		3A8D1EDB27A1405B0066EBBC /* ReportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D1EDA27A1405B0066EBBC /* ReportSheet.swift */; };
 		3A964F04279BF21100F3D004 /* ProfilePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A964F03279BF21100F3D004 /* ProfilePreviewView.swift */; };
 		3AB67CAF27949BE2005F51FC /* JoinedActivitySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB67CAE27949BE2005F51FC /* JoinedActivitySheet.swift */; };
 		3AEF369A279937E7001890A2 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF3699279937E6001890A2 /* Design.swift */; };
@@ -27,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		3A10BF70278E359C004DF0B8 /* PreviewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewActivityView.swift; sourceTree = "<group>"; };
-		3A647E38278C00E5002990BC /* Berkeley Social Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Berkeley Social Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A647E38278C00E5002990BC /* FOMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A647E3B278C00E5002990BC /* Social_ClubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_ClubApp.swift; sourceTree = "<group>"; };
 		3A647E3D278C00E5002990BC /* GlobalActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalActivityView.swift; sourceTree = "<group>"; };
 		3A647E3F278C00E7002990BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +44,10 @@
 		3A647E56278C054E002990BC /* ModifyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyActivityView.swift; sourceTree = "<group>"; };
 		3A647E58278C057F002990BC /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		3A647E5A278C06F2002990BC /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		3A6C062127A66E1000BA24C1 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		3A6C062327A672A500BA24C1 /* ActivityHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryView.swift; sourceTree = "<group>"; };
+		3A8D1ED727A13E5E0066EBBC /* AcknowledgementsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsSheet.swift; sourceTree = "<group>"; };
+		3A8D1EDA27A1405B0066EBBC /* ReportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSheet.swift; sourceTree = "<group>"; };
 		3A964F03279BF21100F3D004 /* ProfilePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePreviewView.swift; sourceTree = "<group>"; };
 		3AB67CAE27949BE2005F51FC /* JoinedActivitySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedActivitySheet.swift; sourceTree = "<group>"; };
 		3AEF3699279937E6001890A2 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
@@ -78,7 +86,7 @@
 		3A647E39278C00E5002990BC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A647E38278C00E5002990BC /* Berkeley Social Club.app */,
+				3A647E38278C00E5002990BC /* FOMO.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +126,7 @@
 		3A647E4A278C010F002990BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A8D1ED927A1403A0066EBBC /* Feedback Views */,
 				3A964F02279BF1FE00F3D004 /* Profile Views */,
 				3A6A343B27925DF900A7EA45 /* Workflow Views */,
 				3A10BF74278E5C4E004DF0B8 /* Activity Views */,
@@ -130,6 +139,7 @@
 			children = (
 				3A647E4C278C0182002990BC /* User.swift */,
 				3A647E4E278C018F002990BC /* Activity.swift */,
+				3A6C062127A66E1000BA24C1 /* Rating.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,8 +149,18 @@
 			children = (
 				3A647E58278C057F002990BC /* UserProfileView.swift */,
 				3A647E5A278C06F2002990BC /* MainTabView.swift */,
+				3A6C062327A672A500BA24C1 /* ActivityHistoryView.swift */,
 			);
 			path = "Workflow Views";
+			sourceTree = "<group>";
+		};
+		3A8D1ED927A1403A0066EBBC /* Feedback Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A8D1ED727A13E5E0066EBBC /* AcknowledgementsSheet.swift */,
+				3A8D1EDA27A1405B0066EBBC /* ReportSheet.swift */,
+			);
+			path = "Feedback Views";
 			sourceTree = "<group>";
 		};
 		3A964F02279BF1FE00F3D004 /* Profile Views */ = {
@@ -154,9 +174,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A647E37278C00E5002990BC /* Berkeley Social Club */ = {
+		3A647E37278C00E5002990BC /* FOMO */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A647E46278C00E7002990BC /* Build configuration list for PBXNativeTarget "Berkeley Social Club" */;
+			buildConfigurationList = 3A647E46278C00E7002990BC /* Build configuration list for PBXNativeTarget "FOMO" */;
 			buildPhases = (
 				3A647E34278C00E5002990BC /* Sources */,
 				3A647E35278C00E5002990BC /* Frameworks */,
@@ -166,9 +186,9 @@
 			);
 			dependencies = (
 			);
-			name = "Berkeley Social Club";
+			name = FOMO;
 			productName = "Social Club";
-			productReference = 3A647E38278C00E5002990BC /* Berkeley Social Club.app */;
+			productReference = 3A647E38278C00E5002990BC /* FOMO.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +206,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A647E33278C00E5002990BC /* Build configuration list for PBXProject "Berkeley Social Club" */;
+			buildConfigurationList = 3A647E33278C00E5002990BC /* Build configuration list for PBXProject "FOMO" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -199,7 +219,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A647E37278C00E5002990BC /* Berkeley Social Club */,
+				3A647E37278C00E5002990BC /* FOMO */,
 			);
 		};
 /* End PBXProject section */
@@ -222,6 +242,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A647E53278C029E002990BC /* ActivityData.swift in Sources */,
+				3A8D1EDB27A1405B0066EBBC /* ReportSheet.swift in Sources */,
+				3A6C062227A66E1000BA24C1 /* Rating.swift in Sources */,
 				3A647E59278C057F002990BC /* UserProfileView.swift in Sources */,
 				3A647E55278C03F5002990BC /* AddActivitySheet.swift in Sources */,
 				3A10BF71278E359C004DF0B8 /* PreviewActivityView.swift in Sources */,
@@ -229,7 +251,9 @@
 				3A647E3E278C00E5002990BC /* GlobalActivityView.swift in Sources */,
 				3A647E3C278C00E5002990BC /* Social_ClubApp.swift in Sources */,
 				3A964F04279BF21100F3D004 /* ProfilePreviewView.swift in Sources */,
+				3A6C062427A672A500BA24C1 /* ActivityHistoryView.swift in Sources */,
 				3A647E4F278C018F002990BC /* Activity.swift in Sources */,
+				3A8D1ED827A13E5E0066EBBC /* AcknowledgementsSheet.swift in Sources */,
 				3A647E51278C0294002990BC /* UserData.swift in Sources */,
 				3A647E4D278C0182002990BC /* User.swift in Sources */,
 				3AEF369A279937E7001890A2 /* Design.swift in Sources */,
@@ -364,7 +388,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Social Club/Preview Content\"";
 				DEVELOPMENT_TEAM = NPQX32Q2V8;
 				ENABLE_PREVIEWS = YES;
@@ -380,8 +404,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alexmehregan.Social-Club";
-				PRODUCT_NAME = "Berkeley Social Club";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexmehregan.FOMO;
+				PRODUCT_NAME = FOMO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -396,7 +420,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Social Club/Preview Content\"";
 				DEVELOPMENT_TEAM = NPQX32Q2V8;
 				ENABLE_PREVIEWS = YES;
@@ -412,8 +436,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alexmehregan.Social-Club";
-				PRODUCT_NAME = "Berkeley Social Club";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexmehregan.FOMO;
+				PRODUCT_NAME = FOMO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -424,7 +448,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A647E33278C00E5002990BC /* Build configuration list for PBXProject "Berkeley Social Club" */ = {
+		3A647E33278C00E5002990BC /* Build configuration list for PBXProject "FOMO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A647E44278C00E7002990BC /* Debug */,
@@ -433,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A647E46278C00E7002990BC /* Build configuration list for PBXNativeTarget "Berkeley Social Club" */ = {
+		3A647E46278C00E7002990BC /* Build configuration list for PBXNativeTarget "FOMO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A647E47278C00E7002990BC /* Debug */,

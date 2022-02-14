@@ -13,7 +13,7 @@ struct ModifyActivityView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var activity: Activity
-    @State var activityPeopleNeeded: Int
+    @Binding var showCreateActivityButton: Bool
     
     @State var alertMPresenting = false
     @State var alertDPresenting = false
@@ -42,6 +42,15 @@ struct ModifyActivityView: View {
                 Section("Time of activity") {
                     DatePicker("Select", selection: $activity.date)
                 }
+                Section("Select Dorm (optional)") {
+                    Picker("Select Dorm (optional)", selection: $activity.dorm) {
+                        Text("None")
+                        ForEach(Activity.Dorm.allCases) { dorm in
+                            Text(dorm.rawValue)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
             }
             Button(action: {
                 if canJoinBack {
@@ -59,9 +68,10 @@ struct ModifyActivityView: View {
             .padding(.horizontal)
             .padding(.bottom)
         }
+        .navigationTitle("Preview Activity")
+        .navigationBarTitleDisplayMode(.large)
         .alert("Delete activity?", isPresented: $alertDPresenting, actions: { Button("Yes", role: .destructive, action: {
             activityData.removeActivity(activity: activity)
-            userData.currentUser.inActivity = false
             self.presentationMode.wrappedValue.dismiss() })})
     }
     
@@ -75,9 +85,10 @@ struct ModifyActivityView_Previews: PreviewProvider {
     @State static var activity = Activity()
     @State static var isPresenting = true
     @State static var alertMPresenting = false
+    @State static var showCreateActivityButton = true
     
     static var previews: some View {
-        ModifyActivityView(activity: $activity, activityPeopleNeeded: activity.peopleNeeded)
+        ModifyActivityView(activity: $activity, showCreateActivityButton: $showCreateActivityButton)
             .environmentObject(UserData())
             .environmentObject(ActivityData())
     }

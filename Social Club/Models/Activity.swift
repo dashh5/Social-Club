@@ -13,10 +13,24 @@ struct Activity: Identifiable {
     var location: String // maybe location data type here?
     var creator: User
     var atendees: [User]?
-    var date: Date = Date.now
+    var date: Date = Date()
     var id = UUID()
     var hourMin = DateComponents()
     var peopleNeeded: Int
+    var dorm: Dorm?
+    var dateComponentsTill = DateComponents()
+    
+    var ratings: [Rating] = []
+    
+    enum Dorm: String, CaseIterable, Identifiable {
+        case Blackwell = "Blackwell Hall"
+        case Unit1 = "Unit 1"
+        case Unit2 = "Unit 2"
+        case Unit3 = "Unit 3"
+        case Clark_Kerr = "Clark Kerr"
+        
+        var id: String { rawValue }
+    }
     
     init() {
         self.description = ""
@@ -33,6 +47,16 @@ struct Activity: Identifiable {
         self.atendees = atendees
         self.date = date ?? Date.now
         self.peopleNeeded = peopleNeeded
+        setDateMins()
+    }
+    init(description: String, location: String, creator: User, atendees: [User]?, date: Date?, peopleNeeded: Int, dorm: Dorm) {
+        self.description = description
+        self.location = location
+        self.creator = creator
+        self.atendees = atendees
+        self.date = date ?? Date.now
+        self.peopleNeeded = peopleNeeded
+        self.dorm = dorm
         setDateMins()
     }
     
@@ -60,24 +84,77 @@ struct Activity: Identifiable {
         if (hour ?? 0) < 0 || (minute ?? 0) < 0 {
             if hour == 0 {
                 let unwrappedMinute = abs(minute ?? 0)
-                return Text("\(String(unwrappedMinute)) minute\(unwrappedMinute == 1 ? "" : "s") ago")
+                return Text("\(String(unwrappedMinute))m ago")
                     .foregroundColor(.red)
-            } else {
+            } else if (hour ?? 0) > -24 {
                 let unwrappedMinute = abs(minute ?? 0)
                 let unwrappedHour = abs(hour ?? 0)
-                return Text("\(String(unwrappedHour)) hour\(unwrappedHour == 1 ? "" : "s") \(unwrappedMinute) minute\(unwrappedMinute == 1 ? "" : "s") ago")
+                return Text("\(String(unwrappedHour))h \(unwrappedMinute)m ago")
                     .foregroundColor(.red)
+            } else if (hour ?? 0) < -24 {
+                let unwrappedHour = abs(hour ?? 0)
+                let day = unwrappedHour % 24
+                return Text("\(day)d ago")
+                    .foregroundColor(.red)
+            } else {
+                return Text("Error getting date")
             }
         } else {
             // time must be in future
             if hour == 0 {
                 let unwrappedMinute = abs(minute ?? 0)
-                return Text("In \(String(unwrappedMinute)) minute\(unwrappedMinute == 1 ? "" : "s")")
+                return Text("In \(String(unwrappedMinute))m")
+                    .foregroundColor(.green)
                     
-            } else {
+            } else if (hour ?? 0) < 24 {
                 let unwrappedMinute = (minute ?? 0)
                 let unwrappedHour = (hour ?? 0)
-                return Text("In \(String(unwrappedHour)) hour\(unwrappedHour == 1 ? "" : "s") \(unwrappedMinute) minute\(unwrappedMinute == 1 ? "" : "s")")
+                return Text("In \(String(unwrappedHour))h \(unwrappedMinute) m")
+                    .foregroundColor(.green)
+            } else if (hour ?? 0) > 24 {
+                let unwrappedHour = (hour ?? 0)
+                return Text("In \(unwrappedHour % 24)d")
+                    .foregroundColor(.green)
+            } else {
+                return Text("Error getting date")
+            }
+        }
+    }
+    
+    var timeTillActivityString: String {
+        let dateComponents = self.getDateDiff()
+        let hour = dateComponents?.hour
+        let minute = dateComponents?.minute
+        
+        // if either time is negative, the activity must be in the past
+        if (hour ?? 0) < 0 || (minute ?? 0) < 0 {
+            if hour == 0 {
+                let unwrappedMinute = abs(minute ?? 0)
+                return "\(String(unwrappedMinute))m ago"
+            } else if (hour ?? 0) > -24 {
+                let unwrappedMinute = abs(minute ?? 0)
+                let unwrappedHour = abs(hour ?? 0)
+                return "\(String(unwrappedHour))h \(unwrappedMinute)m ago"
+            } else if (hour ?? 0 ) < -24 {
+                let unwrappedHour = abs(hour ?? 0)
+                return "\(unwrappedHour % 24)d ago"
+            } else {
+                return "Error getting date"
+            }
+        } else {
+            // time must be in future
+            if hour == 0 {
+                let unwrappedMinute = abs(minute ?? 0)
+                return "In \(String(unwrappedMinute))m"
+            } else if (hour ?? 0) < 24 {
+                let unwrappedMinute = (minute ?? 0)
+                let unwrappedHour = (hour ?? 0)
+                return "In \(String(unwrappedHour))h \(unwrappedMinute)m"
+            } else if (hour ?? 0) > 24 {
+                let unwrappedHour = (hour ?? 0)
+                return "In \(unwrappedHour % 24)d"
+            } else {
+                return "Error getting date"
             }
         }
     }

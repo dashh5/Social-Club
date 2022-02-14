@@ -13,6 +13,7 @@ struct JoinedActivitySheet: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var activity: Activity
+    @Binding var showCreateActivityButton: Bool
     
     @State var alertLPresenting = false
     
@@ -48,6 +49,11 @@ struct JoinedActivitySheet: View {
                     Section("People needed") {
                         Text(String(activity.peopleNeeded))
                     }
+                    if activity.dorm != nil {
+                        Section("Dorm") {
+                            Text(activity.dorm?.rawValue ?? "")
+                        }
+                    }
                 }
                 Button(action: { leaveAlert() }) {
                     Design.redLongButtonLabel(text: "Leave Activity")
@@ -56,6 +62,7 @@ struct JoinedActivitySheet: View {
                 .padding(.bottom)
             }
             .navigationTitle("Your Joined Activity")
+            .navigationBarTitleDisplayMode(.large)
             .alert("Activity Left", isPresented: $alertLPresenting, actions: { Button("Cool", role: .cancel, action: {
                 activityLeftActions()
             }) })
@@ -79,8 +86,8 @@ struct JoinedActivitySheet: View {
 
 struct JoinedActivitySheet_Previews: PreviewProvider {
     @State static var emptyActivity = Activity()
-    
+    @State static var showCreateActivityButton = true
     static var previews: some View {
-        JoinedActivitySheet(activity: $emptyActivity)
+        JoinedActivitySheet(activity: $emptyActivity, showCreateActivityButton: $showCreateActivityButton)
     }
 }

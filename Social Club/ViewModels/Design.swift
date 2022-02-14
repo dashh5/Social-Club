@@ -22,6 +22,19 @@ struct Design {
         .background(Color.blue).cornerRadius(2.5)
     }
     
+    static func newLongButtonLabel(text: String) -> some View {
+        HStack {
+            Spacer()
+            Text(text)
+                .foregroundColor(Color.white)
+                .font(.body)
+                .bold()
+                .padding()
+            Spacer()
+        }
+        .background(Color.teal).cornerRadius(2.5)
+    }
+    
     static func redLongButtonLabel(text: String) -> some View {
         HStack {
             Spacer()

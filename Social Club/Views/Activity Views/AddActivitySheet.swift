@@ -14,7 +14,7 @@ struct AddActivitySheet: View {
     @State var newActivity = Activity()
     @Binding var isPresenting: Bool
     @State private var alertCPresenting = false
-    @State private var alertIPresenting = false
+    @Binding var showCreateActivityButton: Bool
     
     @FocusState private var currentFocused: Field?
     
@@ -48,6 +48,15 @@ struct AddActivitySheet: View {
                     Section("Time of activity") {
                         DatePicker("Select", selection: $newActivity.date)
                     }
+                    Section("Select Dorm (optional)") {
+                        Picker("Select Dorm (optional)", selection: $newActivity.dorm) {
+                            Text("None")
+                            ForEach(Activity.Dorm.allCases) { dorm in
+                                Text(dorm.rawValue)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                    }
                 }
                 .submitLabel(.next)
                 .onSubmit {
@@ -59,11 +68,7 @@ struct AddActivitySheet: View {
                     }
                 }
                 Button(action: {
-                    if userData.currentUser.inActivity {
-                        alertIPresenting = true
-                    } else {
-                        alertCPresenting = true
-                    }
+                    alertCPresenting = true
                 }) {
                     Design.blueLongButtonLabel(text: "Post Activity")
                 }
@@ -88,8 +93,6 @@ struct AddActivitySheet: View {
             activityData.addActivity(activity: newActivity)
             userData.currentUser.joinActivity(activity: newActivity)
             isPresenting = false }
-        ) })
-        .alert("Error: You are currently in an activity!", isPresented: $alertIPresenting, actions: { Button("Ok", role: .cancel, action: {}
         ) })
     }
     
@@ -116,9 +119,10 @@ struct AddActivitySheet_Previews: PreviewProvider {
     @State static var isPresenting = true
     @State static var isCPresenting = false
     @State static var isJPresenting = false
+    @State static var showCreateActivityButton = true
     
     static var previews: some View {
-        AddActivitySheet(newActivity: Activity(), isPresenting: $isPresenting)
+        AddActivitySheet(newActivity: Activity(), isPresenting: $isPresenting, showCreateActivityButton: $showCreateActivityButton)
             .environmentObject(UserData())
             .environmentObject(ActivityData())
     }

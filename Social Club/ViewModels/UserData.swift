@@ -14,7 +14,7 @@ class UserData: ObservableObject {
     @Published var currentUser: User
     
     init() {
-        currentUser = User(name: "TestUser", phone: 123, activities: nil, instagram: "")
+        currentUser = User()
         users.append(currentUser)
     }
     
